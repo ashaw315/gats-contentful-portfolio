@@ -3,6 +3,10 @@ require('dotenv').config({
 });
 
 module.exports = {
+  siteMetadata: {
+    title: "Adam Shaw",
+    // siteUrl: `https://www.yourdomain.tld`,
+  },
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
