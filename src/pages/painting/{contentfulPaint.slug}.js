@@ -15,6 +15,8 @@ const PaintPage = ({data, pageContext}) => {
     let prev = all.nodes[index - 1].slug
     let next = all.nodes[index + 1].slug
 
+    console.log(all)
+
     console.log(prev)
     
 

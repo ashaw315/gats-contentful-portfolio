@@ -9,75 +9,73 @@ import $ from "jquery";
 
 const ProjectPage = ({ data }) => {
 
-let list = useRef();
-const [hoverState, setHoverState] = useState(false);
-const { x, y } = useMousePosition();
-const [listPosition, setListPosition] = useState({
-      top: 0,
-      left: 0,
-   });
-
-useEffect(() => {
-    setListPosition({
-       top: list.current.getBoundingClientRect().top,
-       left: list.current.getBoundingClientRect().left,
-    });
+// useEffect(() => {
     
-    const mouseElement = document.querySelector("#mouse");
-    const mouseBg = $("#mouse-bg");
-    let lastMouseBg = "";
-    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const mouse = { x: pos.x, y: pos.y };
-    const speed = 0.55;
+//     const mouseElement = document.querySelector("#mouse");
+//     const mouseBg = $("#mouse-bg");
+//     let lastMouseBg = "";
+//     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+//     const mouse = { x: pos.x, y: pos.y };
+//     const speed = 0.55;
 
-    const xSet = gsap.quickSetter(mouseElement, "x", "px");
-    const ySet = gsap.quickSetter(mouseElement, "y", "px");
+//     const xSet = gsap.quickSetter(mouseElement, "x", "px");
+//     const ySet = gsap.quickSetter(mouseElement, "y", "px");
 
-    gsap.ticker.add(() => {
-        // adjust speed for higher refresh monitors
-        const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-        pos.x += (mouse.x - pos.x) * dt;
-        pos.y += (mouse.y - pos.y) * dt;
-        xSet(pos.x);
-        ySet(pos.y);
-        mouseBg.css("background-position",`${mouse.x}px ${mouse.y}px`)
-        if(document.hidden){
-          mouseToggle(false);
-        }
-      });
+//     gsap.ticker.add(() => {
+//         // adjust speed for higher refresh monitors
+//         const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+//         pos.x += (mouse.x - pos.x) * dt;
+//         pos.y += (mouse.y - pos.y) * dt;
+//         xSet(pos.x);
+//         ySet(pos.y);
+//         mouseBg.css("background-position",`${mouse.x}px ${mouse.y}px`)
+//         if(document.hidden){
+//           mouseToggle(false);
+//         }
+//       });
 
-    const mouseToggle = (polarity) => {
-        mouseOn = polarity;
-        $("#mouse")[(polarity ? "removeClass":"addClass")]("hide");
-      }
+//     const mouseToggle = (polarity) => {
+//         mouseOn = polarity;
+//         $("#mouse")[(polarity ? "removeClass":"addClass")]("hide");
+//       }
 
-    let mouseOn = false;
-    window.addEventListener("mousemove", e => {
-    mouse.x = e.x;
-    mouse.y = e.y;
-    if(!mouseOn){
-        mouseToggle(true);
-    }
-    });
+//     let mouseOn = false;
+//     window.addEventListener("mousemove", e => {
+//     mouse.x = e.x;
+//     mouse.y = e.y;
+//     if(!mouseOn){
+//         mouseToggle(true);
+//     }
+//     });
 
-    const setToolTip = (text) => {
-        // $("#tooltip").html(text);
-        console.log($("#tooltip").html(text));
-      }
+//     const setToolTip = (text) => {
+//         // $("#tooltip").html(text);
+//         console.log($("#tooltip").html(text));
+//       }
 
-    const toolTip = (polarity) => {
-        $("#tooltip")[(polarity ? "addClass":"removeClass")]("active");
-      }
+//     const toolTip = (polarity) => {
+//         $("#tooltip")[(polarity ? "addClass":"removeClass")]("active");
+//       }
 
-      $(".single-project").mouseenter((e)=>{
-        setToolTip($(e.target).closest(".single-project").find(".tooltip").html());
-        console.log($(e.target).closest(".single-project").find(".tooltip").html());
-        toolTip(true);
-      }).mouseleave((e)=>{
-        toolTip(false);
-      });
+//       $(".single-project").mouseenter((e)=>{
+//         setToolTip($(e.target).closest(".single-project").find(".tooltip").html());
+//         console.log($(e.target).closest(".single-project").find(".tooltip").html());
+//         toolTip(true);
+//       }).mouseleave((e)=>{
+//         toolTip(false);
+//       });
 
- }, []);
+//       return () => {
+//         window.removeEventListener('mousemove', (e) => {
+//           mouse.x = e.x;
+//           mouse.y = e.y;
+//           if(!mouseOn){
+//            mouseToggle(true);
+//           }
+//         })
+//       }
+
+//  }, []);
 
  
 
@@ -91,7 +89,7 @@ useEffect(() => {
             <h1>{data.contentfulProject.title}</h1>
             {data.contentfulProject.projectGroup.map((project) => (
               <Link key={project.id} to={`/projects/${data.contentfulProject.slug}/${project.slug}`}>
-                <div ref={list} className={`single-project ${project.slug}`}>
+                <div className={`single-project ${project.slug}`}>
                     <div className="tooltip">
                         <h2>{project.title}</h2>
                         <p>{project.description.description}</p>

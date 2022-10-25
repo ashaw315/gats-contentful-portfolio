@@ -25,19 +25,102 @@ img {
     height: auto;
 }
 
+path {
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    fill: #FFFFFF
+  }
+
+  .logo {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 0.25rem;
+    &.active {
+        opacity: 1;
+        transition: ease-in 1s;
+    }
+    &.inactive {
+        opacity: 0;
+        transition: ease-in 4.5s;
+    }
+  }
+
 #main-container {
     font-family: 'Poppins', sans-serif;
     .nav-container { 
     }
-    .main-menu {
+    .menu-left {
         z-index: 500;
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5em;
+        display: flex;
+        justify-content: flex-end;
+        gap: 2rem;
+        position: fixed;
+        top: 1rem;
+        left: 3rem;
+        // transition: visibility 0s, opacity 0.5s linear;
+        // opacity: 1;
+        transition: ease-out 1s;
+        opacity: 1;
+        .right-link {
+            text-decoration: none;
+            // color: black;
+            border-bottom: 1px solid transparent;
+            transition: ease-in 0.5s;
+            cursor: pointer;
+            &:hover {
+                border-bottom: 1px solid black;
+                font-style: italic;
+            }
+        }
+        .menu-toggle {
+            transition: ease-in 1s;
+        }
+        a {
+            transition: ease-in 0.5s;
+            -webkit-text-stroke: 1px black;
+            color: white;
+        }
+        &.menu_active {
+            a {
+                transition: ease-in 0.5s;
+                opacity: 0;
+            }
+            .menu-toggle {
+            transform: translateX(-4rem);
+            transition: ease-in 1s;
+            }
+        }
+    }
+    .main-right {
+        z-index: 500;
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5em;
+        display: flex;
+        justify-content: flex-end;
+        gap: 2rem;
+        position: fixed;
+        right: 3rem;
+        top: 1rem;
+        .main-link {
+            text-decoration: none;
+            color: black;
+            border-bottom: 1px solid transparent;
+            transition: ease-in 0.5s;
+            cursor: pointer;
+            &:hover {
+                border-bottom: 1px solid black;
+                font-style: italic;
+            }
+        }
         .menu-toggle {
             position: fixed;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1.5em;
             top: 1rem;
             left: 3rem;
             z-index: 100;
+            border-bottom: 1px solid transparent;
             transition: ease-in 0.5s;
             cursor: pointer;
             &:hover {
@@ -57,6 +140,10 @@ img {
     flex-direction: column;
     align-items: center;
     padding: 3rem;
+    h1 {
+        font-weight: lighter;
+        margin-bottom: 0;
+    }
     .single-project {
         display: flex;
         flex-direction: column;
@@ -70,9 +157,6 @@ img {
             }
         }
         .tooltip {
-            font-family: 'Poppins', sans-serif;
-            font-weight: lighter;
-            max-width: 500px;
             display: none;
         }
     } 
@@ -194,12 +278,34 @@ img {
       z-index: 1000;
       max-width: 40vw;
       min-width: 20vw;
+      h2 {
+        font-size: 1em;
+        }
     //   font-size: 1em;
       &.active {
         opacity: 1;
-        h2 {
-            font-size: 1em;
-        }
+        
       }
+    }
+  }
+
+
+  .contact-container {
+    width: 100vw;
+    height: 100vh;
+    background: red;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // font-size: 1em;
+    a {
+        color: white;
+        text-decoration: none;
+        transition: ease-in 0.5s;
+        border-bottom: 1px solid transparent;
+        &:hover {
+            border-bottom: 1px solid white;
+        }
     }
   }
