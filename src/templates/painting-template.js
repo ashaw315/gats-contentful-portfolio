@@ -74,6 +74,8 @@ query paintingtQ($id: String) {
         slug
         id
         title
+        year
+        material
         description {
           description
         }
