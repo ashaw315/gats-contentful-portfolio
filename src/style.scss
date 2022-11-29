@@ -55,6 +55,16 @@ path {
     }
   }
 
+// .menu-container {
+//     position: fixed;
+//     z-index: 1;
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     background: #ffffffd6;
+//     height: calc(2rem + 1.5em);
+// }
+
 #main-container {
     font-family: 'Poppins', sans-serif;
     .nav-container { 
@@ -73,6 +83,11 @@ path {
         // opacity: 1;
         transition: ease-out 1s;
         opacity: 1;
+        background: white;
+        border-left: 1px solid;
+        border-top: 1px solid;
+        padding: 0 1rem;
+        border-right: 1px solid;
         .right-link {
             text-decoration: none;
             // color: black;
@@ -93,6 +108,11 @@ path {
             color: white;
         }
         &.menu_active {
+            border-left: 1px transparent;
+            border-top: 1px transparent;
+            border-right: 1px transparent;
+            padding: 0;
+            background: transparent;
             a {
                 transition: ease-in 0.5s;
                 opacity: 0;
@@ -113,6 +133,11 @@ path {
         position: fixed;
         right: 3rem;
         top: 1rem;
+        background: white;
+        border-left: 1px solid;
+        border-top: 1px solid;
+        padding: 0 1rem;
+        border-right: 1px solid;
         .main-link {
             text-decoration: none;
             color: black;

@@ -109,13 +109,15 @@ useEffect(() => {
             <div id="mouse-bg"></div>
             <div id="tooltip"></div>
           </div>
-          <div className={`menu-left ${show ? `menu_active` : null }`}>
-                <Link className="right-link" to='/'>AS</Link>
-                <div className={`menu-toggle ${show ? `menu_active` : null } right-link`} onClick={() => setShow(!show)}>Projects</div>
-          </div>
-            <div className='main-right'  onClick={() => show ? setShow(false) : null}>
-                <div className='main-link'>Text</div>
-                <Link className='main-link' to='/contact'>Contact</Link>
+          <div className='menu-container'>
+            <div className={`menu-left ${show ? `menu_active` : null }`}>
+                  <Link className="right-link" to='/'>AS</Link>
+                  <div className={`menu-toggle ${show ? `menu_active` : null } right-link`} onClick={() => setShow(!show)}>Projects</div>
+            </div>
+              <div className='main-right'  onClick={() => show ? setShow(false) : null}>
+                  <div className='main-link'>Text</div>
+                  <Link className='main-link' to='/contact'>Contact</Link>
+              </div>
             </div>
                <div className={`nav-container ${show ? `menu_active` : null }`} onClick={() => setShow(!show)}>      
                     <h3><Link to='/'>Home</Link></h3>
