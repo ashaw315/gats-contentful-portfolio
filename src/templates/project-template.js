@@ -95,7 +95,6 @@ const ProjectPage = ({ data }) => {
 
 //  }, []);
 
- 
 
 // console.log( x, y)
 
@@ -118,8 +117,9 @@ const ProjectPage = ({ data }) => {
                     <span className="project-title">{data.contentfulProject.title}</span>
                   </Marquee>                  
                 </div>
+                <div className="project-images">
             {data.contentfulProject.projectGroup.map((project) => (
-              <Link key={project.id} to={`/projects/${data.contentfulProject.slug}/${project.slug}`}>
+              <Link className="project-image-link" key={project.id} to={`/projects/${data.contentfulProject.slug}/${project.slug}`}>
                 <div className={`single-project ${project.slug}`}>
                     <div className="tooltip">
                         <h2>{project.title}</h2>
@@ -137,7 +137,8 @@ const ProjectPage = ({ data }) => {
                 </div>
               </Link>
               
-            ))}            
+            ))}       
+            </div>     
             </div>
         </Layout>
     )

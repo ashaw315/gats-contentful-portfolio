@@ -6,6 +6,7 @@ function IndexPage() {
   return (
     <Layout pageTitle={"Home Page"}>
       <MatterFull />
+      <p>hello</p>
     </Layout>
   
   )

@@ -36,8 +36,8 @@ const Logo = () => {
   return (
     <div className={`logo ${visible ? `active` : `inactive` }`}>
     <motion.svg
-      width="121.8"
-      height="60.4"
+      width="75vw"
+      height="75vh"
       viewBox="0 0 121.8 60.4"
       initial="hidden"
       animate="visible"
@@ -57,6 +57,8 @@ const Logo = () => {
         transition={transition}
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="svg-logo"
+        
         
       />
       <motion.path
@@ -66,6 +68,7 @@ const Logo = () => {
         initial={{ pathLength: 0, pathOffset: 0 }}
         animate={visible ? animateIn : animateOut}
         transition={transition}
+        className="svg-logo"
       />
       <motion.path
         d="M45.4,33.2c0-1.7,1.3-3,3-3h29.4c1.7,0,3,1.4,3,3v23.2c0,1.6-1.3,3-3,3H48.4c-1.7,0-3-1.4-3-3V33.2z"
@@ -74,6 +77,7 @@ const Logo = () => {
         initial={{ pathLength: 0, pathOffset: 0 }}
         animate={visible ? animateIn : animateOut}
         transition={transition}
+        className="svg-logo"
       />
       <motion.path
         d="M36.8,25c-0.4,1.6-2.1,2.9-3.8,2.9H3.5c-1.6,0-2.6-1.3-2.2-2.9L6.8,4.8c0.4-1.6,2.1-2.9,3.8-2.9H40
@@ -83,6 +87,7 @@ const Logo = () => {
         initial={{ pathLength: 0, pathOffset: 0 }}
         animate={visible ? animateIn : animateOut}
         transition={transition}
+        className="svg-logo"
       />
       <motion.path
         d="M99.9,29.4l-2.4-10.8c-0.4-1.6-0.4-4.2,0-5.9l1.8-7.9c0.4-1.6-0.7-2.9-2.3-2.9H71.1c-1.7,0-3.3,1.3-3.7,2.9
@@ -94,6 +99,7 @@ const Logo = () => {
         animate={visible ? animateIn : animateOut}
         transition={transition}
         fill="none"
+        className="svg-logo"
       />
       <motion.path
         d="M85.4,9.3c0-1.7,1.3-3,3-3h29.4c1.7,0,3,1.3,3,3v20.8c0,1.7-1.3,3-3,3H88.4c-1.7,0-3-1.4-3-3V9.3z"
@@ -102,6 +108,7 @@ const Logo = () => {
         initial={{ pathLength: 0, pathOffset: 0 }}
         animate={visible ? animateIn : animateOut}
         transition={transition}
+        className="svg-logo"
       />
     </motion.svg>
     </div>

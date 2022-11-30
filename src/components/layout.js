@@ -63,13 +63,20 @@ useEffect(() => {
       $("#mouse")[(polarity ? "removeClass":"addClass")]("hide");
     }
 
+  const textLoop = document.querySelector(".bg-text")
+
   let mouseOn = false;
   window.addEventListener("mousemove", e => {
   mouse.x = e.x;
   mouse.y = e.y;
+  let c = 0;
   if(!mouseOn){
       mouseToggle(true);
   }
+  if (mouse.x <= mouse.y) {
+    c = mouse.y - mouse.x;
+}
+  // textLoop.style.color= `rgb(${mouse.x}, ${(mouse.y - 255) * (-1)}, ${c})`;
   });
 
   const setToolTip = (text) => {
@@ -115,7 +122,7 @@ useEffect(() => {
                   <div className={`menu-toggle ${show ? `menu_active` : null } right-link`} onClick={() => setShow(!show)}>Projects</div>
             </div>
               <div className='main-right'  onClick={() => show ? setShow(false) : null}>
-                  <div className='main-link'>Text</div>
+                  <Link className='main-link' to='/text'>Text</Link>
                   <Link className='main-link' to='/contact'>Contact</Link>
               </div>
             </div>
