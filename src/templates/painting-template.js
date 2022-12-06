@@ -48,19 +48,29 @@ const PaintingTemplate = ({data}) => {
     return (
         <Layout>
                 <div className='single-painting'>
+                  <div className="prev" data-image="/prev-icon.png">
+                    <div className="prev-image">
+                      {/* <img src="/prev-icon.png"/> */}
+                    </div>
+                  </div>
                     <div className="painting-image">
                         <img 
                             src={painting.image ? painting.image.url : null }
                             alt={painting.title}
                         />
                     </div>
+                    <div className="next"></div>
+                </div>
+                <div className="single-painting-info">
                     <div className="painting-info">
-                        <h2>{painting.title}</h2>
+                        <h4>{painting.title}</h4>
+                        <p>{painting.year}</p>
+                        <p>{painting.material}</p>
                         <p>{painting.description.description}</p>
                     </div> 
                 </div>
-                <Link to={`/projects/${data.contentfulProject.slug}/${next}`}>Previous</Link>
-            <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>Next</Link>
+                {/* <Link to={`/projects/${data.contentfulProject.slug}/${next}`}>Previous</Link>
+            <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>Next</Link> */}
         </Layout>
     )
 }

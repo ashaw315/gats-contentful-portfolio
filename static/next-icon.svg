@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 94 94">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g>
+    <circle class="cls-1" cx="47" cy="47" r="44.5"/>
+    <path d="M47,5c23.16,0,42,18.84,42,42s-18.84,42-42,42S5,70.16,5,47,23.84,5,47,5m0-5C21.04,0,0,21.04,0,47s21.04,47,47,47,47-21.04,47-47S72.96,0,47,0h0Z"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="17.5" y="44.5" width="60" height="5"/>
+    <polygon points="80 42 15 42 15 52 80 52 80 42 80 42"/>
+  </g>
+  <g>
+    <rect class="cls-1" x="44.5" y="16.5" width="5" height="60"/>
+    <path d="M47,19v0m5-5h-10V79h10V14h0Z"/>
+  </g>
+</svg>

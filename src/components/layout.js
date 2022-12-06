@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 // import svgLogo  from '../assets/logo'
 import Logo from '../assets/logo'
 import gsap from "gsap";
-import { Expo } from 'gsap';
+import { Expo, TweenMax } from 'gsap';
 import $ from "jquery";
 
 
@@ -37,13 +37,19 @@ useEffect(() => {
     
   const mouseElement = document.querySelector("#mouse");
   const mouseBg = $("#mouse-bg");
+  const mainContainer = $("#main-container")
   let lastMouseBg = "";
   const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   const mouse = { x: pos.x, y: pos.y };
   const speed = 0.55;
 
+
   const xSet = gsap.quickSetter(mouseElement, "x", "px");
   const ySet = gsap.quickSetter(mouseElement, "y", "px");
+
+  gsap.set("#mouse-bg", {xPercent: -50, yPercent: -50});
+
+  TweenMax.to(mouseBg, {rotation:"360", duration: 25, ease: 'none', repeat:-1});
 
   gsap.ticker.add(() => {
       // adjust speed for higher refresh monitors
@@ -90,11 +96,40 @@ useEffect(() => {
 
     $(".single-project").mouseenter((e)=>{
       setToolTip($(e.target).closest(".single-project").find(".tooltip").html());
-      console.log($(e.target).closest(".single-project").find(".tooltip").html());
+      console.log("tooltip find",$(e.target).closest(".single-project").find(".tooltip").html());
       toolTip(true);
     }).mouseleave((e)=>{
       toolTip(false);
     });
+
+
+    //working!!
+    // $(".prev").mouseenter((e)=>{
+    //   console.log("tooltip find",$(e.target).closest(".prev").find(".prev-image").html());
+    //   mouseBg.css("background", `url('/prev-icon.png')`);
+    // }).mouseleave((e)=>{
+    //     mouseBg.css("background","");
+    //   });
+
+    $(".prev").mouseenter((e)=>{
+      // mouseBg.css("background", `url('/prev-icon.png')`);
+      mouseBg.css("background", `black`);
+      mouseBg.css("clip-path", "polygon(0 35%, 100% 35%, 100% 65%, 0 65%)")
+      mainContainer.css("cursor", "none");
+    }).mouseleave((e)=>{
+        mouseBg.css("background","");
+        mainContainer.css("cursor", "default");
+      });
+
+    $(".next").mouseenter((e)=>{
+      // mouseBg.css("background", `url('/prev-icon.png')`);
+      mouseBg.css("background", `black`);
+      mouseBg.css("clip-path", "polygon(0% 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%)")
+      mainContainer.css("cursor", "none");
+    }).mouseleave((e)=>{
+        mouseBg.css("background","");
+        mainContainer.css("cursor", "default");
+      });
 
     return () => {
       window.removeEventListener('mousemove', (e) => {
