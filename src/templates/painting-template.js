@@ -34,32 +34,35 @@ const PaintingTemplate = ({data}) => {
     console.log("length",data.contentfulProject.projectGroup.length)
 
     if (index < data.contentfulProject.projectGroup.length - 1) {
-        prev = data.contentfulProject.projectGroup[index + 1].slug;
+        next = data.contentfulProject.projectGroup[index + 1].slug;
       }
       if (index > 0) {
-        next = data.contentfulProject.projectGroup[index - 1].slug;
+        prev = data.contentfulProject.projectGroup[index - 1].slug;
       }
     
     // let prev = data.contentfulProject.projectGroup[p].slug
     console.log("prev",prev)
-    console.log("hello",next)
-    
+    console.log("next",next) 
 
     return (
         <Layout>
                 <div className='single-painting'>
-                  <div className="prev" data-image="/prev-icon.png">
-                    <div className="prev-image">
-                      {/* <img src="/prev-icon.png"/> */}
-                    </div>
-                  </div>
+                  {prev ? 
+                  <Link className="prev" to={`/projects/${data.contentfulProject.slug}/${prev}`}></Link>
+                  : 
+                  <div className="no-prev"></div>
+                  }
                     <div className="painting-image">
                         <img 
                             src={painting.image ? painting.image.url : null }
                             alt={painting.title}
                         />
                     </div>
-                    <div className="next"></div>
+                  {next ? 
+                  <Link className="next" to={`/projects/${data.contentfulProject.slug}/${next}`}></Link>
+                  :
+                  <div className="no-next"></div>
+                  }
                 </div>
                 <div className="single-painting-info">
                     <div className="painting-info">
@@ -68,9 +71,10 @@ const PaintingTemplate = ({data}) => {
                         <p>{painting.material}</p>
                         <p>{painting.description.description}</p>
                     </div> 
+                    {prev ? <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>Previous</Link> : null}
+                    {next ?<Link to={`/projects/${data.contentfulProject.slug}/${next}`}>Next</Link> : null}
                 </div>
-                {/* <Link to={`/projects/${data.contentfulProject.slug}/${next}`}>Previous</Link>
-            <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>Next</Link> */}
+                
         </Layout>
     )
 }

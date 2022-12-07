@@ -111,6 +111,13 @@ useEffect(() => {
     //     mouseBg.css("background","");
     //   });
 
+    // $(document).on("mouseenter", (e)=>{
+    //   mouseBg.css("background", `black`);
+    //   mouseBg.css("clip-path", "circle(50% at 50% 50%)");
+    // }).mouseleave((e)=>{
+    //   mouseBg.css("background","");
+    // });
+
     $(".prev").mouseenter((e)=>{
       // mouseBg.css("background", `url('/prev-icon.png')`);
       mouseBg.css("background", `black`);
