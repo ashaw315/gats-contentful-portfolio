@@ -5,6 +5,7 @@ import { graphql, Link } from "gatsby";
 const PaintingTemplate = ({data}) => {
 
     console.log(data)
+    console.log("slug?",data.contentfulProject.slug)
 
     let { all } = data
 
@@ -71,8 +72,17 @@ const PaintingTemplate = ({data}) => {
                         <p>{painting.material}</p>
                         <p>{painting.description.description}</p>
                     </div> 
-                    {prev ? <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>Previous</Link> : null}
-                    {next ?<Link to={`/projects/${data.contentfulProject.slug}/${next}`}>Next</Link> : null}
+                    <div className="prev-next-container">
+                      {prev ? <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>
+                        <img id="prev-icon" src='/prev-icon-2.svg' alt='prev-icon'/>
+                        </Link> : null}
+                        <Link to={`/projects/${data.contentfulProject.slug}`}>
+                        <img id="back-to-project-icon" src='/back-to-project-icon.svg' alt='prev-icon'/>
+                        </Link>
+                      {next ?<Link to={`/projects/${data.contentfulProject.slug}/${next}`}>
+                      <img id="next-icon" src='/next-icon-2.svg' alt='prev-icon'/>
+                        </Link> : null}
+                    </div>
                 </div>
                 
         </Layout>

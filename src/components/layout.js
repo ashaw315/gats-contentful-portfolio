@@ -169,10 +169,10 @@ useEffect(() => {
               </div>
             </div>
                <div className={`nav-container ${show ? `menu_active` : null }`} onClick={() => setShow(!show)}>      
-                    <h3><Link to='/'>Home</Link></h3>
-                    <h3><Link to='/about'>About</Link></h3>
-                    <h3><Link to='/painting'>Painting All</Link></h3>
-                    <h3><Link to='/projects'>Projects</Link></h3>
+                    {/* <h3><Link to='/'>Home</Link></h3> */}
+                    {/* <h3><Link to='/about'>About</Link></h3> */}
+                    {/* <h3><Link to='/painting'>Painting All</Link></h3> */}
+                    {/* <h3><Link to='/projects'>Projects</Link></h3> */}
                     {data.allContentfulProject.nodes?.map((node) => (
                      <h3 key={node.id}><Link to={`/projects/${node.slug}`}>{node.title}</Link></h3>
                    ))}

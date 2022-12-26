@@ -568,6 +568,22 @@ path {
             margin: 0;
         }
     }
+    .prev-next-container {
+        margin-top: 1em;
+        display: flex;
+        gap: 1em;
+        #prev-icon {
+            width: 2em;
+    
+        }
+        #back-to-project-icon {
+            width: 2em;
+        }
+        #next-icon {
+            width: 2em;
+        }
+    }
+    
 }
 
 .prev-image {

@@ -26,7 +26,7 @@ import { graphql } from "gatsby";
                 <style>{`
                 .span-${index} {
                     position: absolute;
-                    top: ${getRandomInt(70)}vh;
+                    top: ${getRandomInt(65)}vh;
                     left: ${getRandomInt(75)}vw;
                     font-size: 20vw;
                     text-transform: capitalize;
