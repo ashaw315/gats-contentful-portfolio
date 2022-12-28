@@ -8,7 +8,7 @@ import gsap from "gsap";
 import { Expo } from 'gsap';
 import $ from "jquery";
 
-const ProjectPage = ({ data }) => {
+const ProjectPage = ({ pageContext }) => {
 
 
 // useEffect(() => {
@@ -27,78 +27,24 @@ const ProjectPage = ({ data }) => {
 
 
 
-// useEffect(() => {
-    
-//     const mouseElement = document.querySelector("#mouse");
-//     const mouseBg = $("#mouse-bg");
-//     let lastMouseBg = "";
-//     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-//     const mouse = { x: pos.x, y: pos.y };
-//     const speed = 0.55;
+let { data} = pageContext
+// console.log("HELLLLLLLLOOOOOO",data)
+console.log("HELLLLLLLLOOOOOO", pageContext)
+let projects = pageContext.projectGroup
+console.log("PROJECTS", projects)
 
-//     const xSet = gsap.quickSetter(mouseElement, "x", "px");
-//     const ySet = gsap.quickSetter(mouseElement, "y", "px");
-
-//     gsap.ticker.add(() => {
-//         // adjust speed for higher refresh monitors
-//         const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-//         pos.x += (mouse.x - pos.x) * dt;
-//         pos.y += (mouse.y - pos.y) * dt;
-//         xSet(pos.x);
-//         ySet(pos.y);
-//         mouseBg.css("background-position",`${mouse.x}px ${mouse.y}px`)
-//         if(document.hidden){
-//           mouseToggle(false);
-//         }
-//       });
-
-//     const mouseToggle = (polarity) => {
-//         mouseOn = polarity;
-//         $("#mouse")[(polarity ? "removeClass":"addClass")]("hide");
-//       }
-
-//     let mouseOn = false;
-//     window.addEventListener("mousemove", e => {
-//     mouse.x = e.x;
-//     mouse.y = e.y;
-//     if(!mouseOn){
-//         mouseToggle(true);
-//     }
-//     });
-
-//     const setToolTip = (text) => {
-//         // $("#tooltip").html(text);
-//         console.log($("#tooltip").html(text));
-//       }
-
-//     const toolTip = (polarity) => {
-//         $("#tooltip")[(polarity ? "addClass":"removeClass")]("active");
-//       }
-
-//       $(".single-project").mouseenter((e)=>{
-//         setToolTip($(e.target).closest(".single-project").find(".tooltip").html());
-//         console.log($(e.target).closest(".single-project").find(".tooltip").html());
-//         toolTip(true);
-//       }).mouseleave((e)=>{
-//         toolTip(false);
-//       });
-
-//       return () => {
-//         window.removeEventListener('mousemove', (e) => {
-//           mouse.x = e.x;
-//           mouse.y = e.y;
-//           if(!mouseOn){
-//            mouseToggle(true);
-//           }
-//         })
-//       }
-
-//  }, []);
+projects.map((p) => {
+  console.log("INDVI PROJECT",p)
+})
 
 
-// console.log( x, y)
+// const previous = index === 0 ? null : items[index - 1].node
 
-    // console.log("projectdata", data)
+// console.log("PAGE Context",slug, title, id) 
+
+
+
+    console.log("projectdata", data)
 
     return (
         <Layout>
@@ -110,16 +56,16 @@ const ProjectPage = ({ data }) => {
                   speed={25}
                   gradient={false}
                   >
-                    <span className="project-title">{data.contentfulProject.title}</span>
-                    <span className="project-title">{data.contentfulProject.title}</span>
-                    <span className="project-title">{data.contentfulProject.title}</span>
-                    <span className="project-title">{data.contentfulProject.title}</span>
-                    <span className="project-title">{data.contentfulProject.title}</span>
+                    <span className="project-title">{pageContext.title}</span>
+                    <span className="project-title">{pageContext.title}</span>
+                    <span className="project-title">{pageContext.title}</span>
+                    <span className="project-title">{pageContext.title}</span>
+                    <span className="project-title">{pageContext.title}</span>
                   </Marquee>                  
                 </div>
                 <div className="project-images">
-            {data.contentfulProject.projectGroup.map((project) => (
-              <Link className="project-image-link" key={project.id} to={`/projects/${data.contentfulProject.slug}/${project.slug}`}>
+            {pageContext?.projectGroup.map((project) => (
+              <Link className="project-image-link" key={project.id} to={`/projects/${pageContext.slug}/${project.slug}`}>
                 <div className={`single-project ${project.slug}`}>
                     <div className="tooltip">
                         <h2>{project.title}</h2>
@@ -129,7 +75,7 @@ const ProjectPage = ({ data }) => {
                     </div> 
                     <div className="project-image">
                         <img 
-                            src={project.image ? project.image.url : null }
+                            src={project.image ? project.image.file.url : null }
                             alt={project.title}
                             dd-tooltip={`${project.title}, ${project.description.description}`}
                         />

@@ -2,65 +2,57 @@ import React from "react";
 import Layout from "../components/layout";
 import { graphql, Link } from "gatsby";
 
-const PaintingTemplate = ({data}) => {
+const PaintingTemplate = ({ pageContext }) => {
 
-    console.log(data)
-    console.log("slug?",data.contentfulProject.slug)
+  // Current Painting, all data!
+  const painting = pageContext.group;
+  // Current Painting image
+  const paintingImage = painting.image.file.url;
 
-    let { all } = data
+  // Array of all works in current Project
+  const works = pageContext.group.project[0].projectGroup;
+  // Current Project slug
+  const currentProject = pageContext.group.project[0].slug
+  
+  // Working methodology for Next/Prev
+  //   previous = index === 0 ? null : works[index - 1].work
+  //   nextnext = index === works.length - 1 ? null : works[index + 1].work
+  
+  // Grab Path name
+  const pathArray = window.location.pathname.split('/');
+  const paintingPath = pathArray[3];
 
-    const pathArray = window.location.pathname.split('/');
-    let paintingPath = pathArray[3];
-    // console.log(typeof paintingPath)
+  // Get index of works in Project
+  const index = works.findIndex((n) => n.slug === paintingPath)
 
-    const painting = data.contentfulProject.projectGroup.find((painting) => painting.slug === paintingPath)
-    // console.log("WHAT you are looking for!",painting)
-    
-    console.log("THIS!",data.contentfulProject.projectGroup[0].slug)
-    // let slug = data.contentfulPaint.slug
-    let index = data.contentfulProject.projectGroup.findIndex((n) => n.slug === paintingPath)
-    console.log(index)
+  //declare variables for next and prev
+  let prev;
+  let next;
 
-    let p = index - 1
-
-    let prev;
-    let next;
-    // if(index !== 0) {
-    //     prev = data.contentfulProject.projectGroup[index - 1].slug;
-    // }
-
-    // if(index + 1) {
-    //     next = data.contentfulProject.projectGroup[index + 1].slug;
-    // }
-    console.log("length",data.contentfulProject.projectGroup.length)
-
-    if (index < data.contentfulProject.projectGroup.length - 1) {
-        next = data.contentfulProject.projectGroup[index + 1].slug;
+  //logic for next and prev
+    if (index < works.length - 1) {
+        next = works[index + 1].slug;
       }
       if (index > 0) {
-        prev = data.contentfulProject.projectGroup[index - 1].slug;
+        prev = works[index - 1].slug;
       }
-    
-    // let prev = data.contentfulProject.projectGroup[p].slug
-    console.log("prev",prev)
-    console.log("next",next) 
 
     return (
         <Layout>
                 <div className='single-painting'>
                   {prev ? 
-                  <Link className="prev" to={`/projects/${data.contentfulProject.slug}/${prev}`}></Link>
+                  <Link className="prev" to={`/projects/${currentProject}/${prev}`}></Link>
                   : 
                   <div className="no-prev"></div>
                   }
                     <div className="painting-image">
                         <img 
-                            src={painting.image ? painting.image.url : null }
+                            src={paintingImage ? paintingImage : null }
                             alt={painting.title}
                         />
                     </div>
                   {next ? 
-                  <Link className="next" to={`/projects/${data.contentfulProject.slug}/${next}`}></Link>
+                  <Link className="next" to={`/projects/${currentProject}/${next}`}></Link>
                   :
                   <div className="no-next"></div>
                   }
@@ -73,13 +65,13 @@ const PaintingTemplate = ({data}) => {
                         <p>{painting.description.description}</p>
                     </div> 
                     <div className="prev-next-container">
-                      {prev ? <Link to={`/projects/${data.contentfulProject.slug}/${prev}`}>
+                      {prev ? <Link to={`/projects/${currentProject}/${prev}`}>
                         <img id="prev-icon" src='/prev-icon-2.svg' alt='prev-icon'/>
                         </Link> : null}
-                        <Link to={`/projects/${data.contentfulProject.slug}`}>
+                        <Link to={`/projects/${currentProject}`}>
                         <img id="back-to-project-icon" src='/back-to-project-icon.svg' alt='prev-icon'/>
                         </Link>
-                      {next ?<Link to={`/projects/${data.contentfulProject.slug}/${next}`}>
+                      {next ? <Link to={`/projects/${currentProject}/${next}`}>
                       <img id="next-icon" src='/next-icon-2.svg' alt='prev-icon'/>
                         </Link> : null}
                     </div>

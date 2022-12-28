@@ -22,16 +22,24 @@ const Layout = ({ pageTitle, children }) => {
         }
       }
       allContentfulProject {
-        nodes {
-          id
-          slug
-          title
+        edges {
+          node {
+            id
+            slug
+            title
+          }
         }
       }
     }
   `)
     
-// console.log(show)
+// console.log("SITE",data.allContentfulProject.edges)
+// let test = data.allContentfulProject.edges?.map((edge) => (
+//   console.log("THIS?",edge.node.id)
+// ))
+// console.log(test)
+
+
 
 useEffect(() => {
     
@@ -150,6 +158,7 @@ useEffect(() => {
 
 }, []);
 
+console.log(data)
 
     return (
         <div id="main-container" >
@@ -173,8 +182,8 @@ useEffect(() => {
                     {/* <h3><Link to='/about'>About</Link></h3> */}
                     {/* <h3><Link to='/painting'>Painting All</Link></h3> */}
                     {/* <h3><Link to='/projects'>Projects</Link></h3> */}
-                    {data.allContentfulProject.nodes?.map((node) => (
-                     <h3 key={node.id}><Link to={`/projects/${node.slug}`}>{node.title}</Link></h3>
+                    {data.allContentfulProject.edges?.map((edge) => (
+                     <h3 key={edge.node.id}><Link to={`/projects/${edge.node.slug}`}>{edge.node.title}</Link></h3>
                    ))}
                    
                </div>
