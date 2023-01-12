@@ -67,14 +67,14 @@ useEffect(() => {
     // const r = 8;
     // add a color picked at random around the color wheel
     
-const letterA = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
-const letterA2 = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
-const letterA3 = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
-const letterD = Vertices.fromPath('175.66 110.34 196 110.34 201.96 116.3 201.96 134.39 196 140.34 175.66 140.34');
-const letterM = Vertices.fromPath('132.96 144.72 141.03 144.72 148.93 159.9 156.78 144.72 164.85 144.72 164.85 174.72 156.91 174.72 156.91 157.74 150.3 170.49 147.16 170.49 140.55 157.74 140.55 174.72 132.96 174.72');
-const letterS = Vertices.fromPath('180.07 146.19 198.73 146.19 203.78 151.24 197.63 157.4 194.22 153.99 184.62 153.99 183.32 155.29 183.32 158.04 184.12 158.85 198.93 159.69 204.18 164.95 204.18 174.45 198.43 180.2 178.67 180.2 173.42 174.95 179.57 168.8 183.17 172.4 193.88 172.4 195.17 171.1 195.17 168.3 194.38 167.5 179.57 166.65 174.32 161.4 174.32 151.94');
-const letterH = Vertices.fromPath('158.2 141.27 166.14 141.27 166.14 152.52 176.64 152.52 176.64 141.27 184.58 141.27 184.58 171.27 176.64 171.27 176.64 159.58 166.14 159.58 166.14 171.27 158.2 171.27');
-const letterW = Vertices.fromPath('132.17 106.17 140.34 106.17 144.48 124.48 149.16 106.17 155.34 106.17 160.01 124.48 164.16 106.17 171.97 106.17 164.34 136.17 156.7 136.17 152.11 118.22 147.53 136.17 138.81 136.17');
+    const letterA = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
+    const letterA2 = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
+    const letterA3 = Vertices.fromPath('155.27 110.34 163.34 110.34 174.73 140.34 166.3 140.34 164.35 135.05 153.68 135.05 151.92 140.34 143.89 140.34');
+    const letterD = Vertices.fromPath('175.66 110.34 196 110.34 201.96 116.3 201.96 134.39 196 140.34 175.66 140.34');
+    const letterM = Vertices.fromPath('132.96 144.72 141.03 144.72 148.93 159.9 156.78 144.72 164.85 144.72 164.85 174.72 156.91 174.72 156.91 157.74 150.3 170.49 147.16 170.49 140.55 157.74 140.55 174.72 132.96 174.72');
+    const letterS = Vertices.fromPath('180.07 146.19 198.73 146.19 203.78 151.24 197.63 157.4 194.22 153.99 184.62 153.99 183.32 155.29 183.32 158.04 184.12 158.85 198.93 159.69 204.18 164.95 204.18 174.45 198.43 180.2 178.67 180.2 173.42 174.95 179.57 168.8 183.17 172.4 193.88 172.4 195.17 171.1 195.17 168.3 194.38 167.5 179.57 166.65 174.32 161.4 174.32 151.94');
+    const letterH = Vertices.fromPath('158.2 141.27 166.14 141.27 166.14 152.52 176.64 152.52 176.64 141.27 184.58 141.27 184.58 171.27 176.64 171.27 176.64 159.58 166.14 159.58 166.14 171.27 158.2 171.27');
+    const letterW = Vertices.fromPath('132.17 106.17 140.34 106.17 144.48 124.48 149.16 106.17 155.34 106.17 160.01 124.48 164.16 106.17 171.97 106.17 164.34 136.17 156.7 136.17 152.11 118.22 147.53 136.17 138.81 136.17');
 
     const colors = [48, 215, 5];
     const color = colors[Math.floor(Math.random()*colors.length)];
@@ -131,29 +131,6 @@ const letterW = Vertices.fromPath('132.17 106.17 140.34 106.17 144.48 124.48 149
         return body;
     
     };
-
-    // function fabricating a bucket, as a white taller-than-wider rectangle positioned at the bottom of the canvas
-
-    // const makeBucket = x => {
-    // const w = 500;
-    // const h = 80;
-    // const y = height - h;
-    // console.log(y)
-
-
-    // return Bodies.rectangle(x, y, w, h, {
-        
-    //     render: {
-    //         fillStyle: "green",
-    //         restitution: 0.9, 
-    //         friction: 0.1,
-    //         inertia: Infinity,
-    //         sprite: {
-    //             texture: `${logo}`
-    //         }
-    //     },
-    // });
-    // };
 
     // PLINKO's elements
     // to prevent the plinkos from bouncing off the canvas's scope, include rectangle elements at the bottom and sides of the element
@@ -216,19 +193,6 @@ const letterW = Vertices.fromPath('132.17 106.17 140.34 106.17 144.48 124.48 149
 
     // since grid refers to a 2d array, flatten the items to a one-dimensional array
     const pegs = grid.reduce((acc, curr) => [...acc, ...curr], []);
-
-    // buckets
-    // arrays of buckets in which the plinkos would eventually fall
-    // as many buckets as the number of columns -1, to make use of the left and right wall for the outer edges
-    // const buckets = Array(logoInt)
-    // .fill()
-    // .map((columnItem, column) => {
-    //     const x = width / 2;
-    //     console.log(columnSize)
-    //     console.log("width",width)
-    //     console.log("X",x)
-    //     return makeBucket(x);
-    // });
 
     const { world } = engine;
     World.add(world, [...contours, ...plinkos, ...pegs]);
@@ -384,6 +348,7 @@ const letterW = Vertices.fromPath('132.17 106.17 140.34 106.17 144.48 124.48 149
 // function adding a single plinko, used following a mouse press and at an interval
 function addPlinko() {
     const plinko = makePlinko();
+    console.log(plinko)
     World.add(world, plinko);
   }
   const intervalID = setInterval(() => {
@@ -435,7 +400,7 @@ function addPlinko() {
           }
       });
 
-  Composite.add(world, mouseConstraint);
+  World.add(world, mouseConstraint);
 
   // keep the mouse in sync with rendering
   render.mouse = mouse;
@@ -445,7 +410,7 @@ function addPlinko() {
     Events.on(engine, 'collisionStart', handleCollision);
 
     // run the engine
-    Engine.run(engine);
+    Matter.Runner.run(engine);
     // run the renderer
     Render.run(render);
 

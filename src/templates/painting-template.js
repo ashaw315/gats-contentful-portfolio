@@ -39,6 +39,7 @@ const PaintingTemplate = ({ pageContext }) => {
 
     return (
         <Layout>
+          <div className="painting-container">
                 <div className='single-painting'>
                   {prev ? 
                   <Link className="prev" to={`/projects/${currentProject}/${prev}`}></Link>
@@ -76,7 +77,7 @@ const PaintingTemplate = ({ pageContext }) => {
                         </Link> : null}
                     </div>
                 </div>
-                
+              </div>
         </Layout>
     )
 }

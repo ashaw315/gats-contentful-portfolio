@@ -8,11 +8,14 @@ import Logo from '../assets/logo'
 import gsap from "gsap";
 import { Expo, TweenMax } from 'gsap';
 import $ from "jquery";
+import FullMenu from './fullmenu'
+import MobileMenu from './mobilemenu'
 
 
 const Layout = ({ pageTitle, children }) => {
 
   const [show, setShow] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth)
 
     const data = useStaticQuery(graphql`
     {
@@ -110,22 +113,6 @@ useEffect(() => {
       toolTip(false);
     });
 
-
-    //working!!
-    // $(".prev").mouseenter((e)=>{
-    //   console.log("tooltip find",$(e.target).closest(".prev").find(".prev-image").html());
-    //   mouseBg.css("background", `url('/prev-icon.png')`);
-    // }).mouseleave((e)=>{
-    //     mouseBg.css("background","");
-    //   });
-
-    // $(document).on("mouseenter", (e)=>{
-    //   mouseBg.css("background", `black`);
-    //   mouseBg.css("clip-path", "circle(50% at 50% 50%)");
-    // }).mouseleave((e)=>{
-    //   mouseBg.css("background","");
-    // });
-
     $(".prev").mouseenter((e)=>{
       // mouseBg.css("background", `url('/prev-icon.png')`);
       mouseBg.css("background", `black`);
@@ -146,6 +133,19 @@ useEffect(() => {
         mainContainer.css("cursor", "default");
       });
 
+      const appHeight = () => {
+        const doc = document.documentElement
+        doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+    }
+    window.addEventListener('resize', appHeight)
+    // appHeight()
+
+      function handleResize() {
+        setIsMobile(window.innerWidth);
+      }
+  
+      window.addEventListener('resize', handleResize);
+
     return () => {
       window.removeEventListener('mousemove', (e) => {
         mouse.x = e.x;
@@ -154,48 +154,48 @@ useEffect(() => {
          mouseToggle(true);
         }
       })
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', appHeight)
     }
 
 }, []);
 
 console.log(data)
 
+  if (isMobile < 768) {
     return (
-        <div id="main-container" >
-           <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-           <div id="mouse">
-            <div id="mouse-bg"></div>
-            <div id="tooltip"></div>
+      <div id="main-container" >
+            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+            <div id="mouse">
+              <div id="mouse-bg"></div>
+              <div id="tooltip"></div>
+            </div>
+            <MobileMenu data={data} show={show} setShow={setShow}/>
+            {/* <h1>{query.allContentfulProject.nodes}</h1> */}
+            <main onClick={() => setShow(false)}>
+                {/* <h1>{pageTitle}</h1> */}
+                {children}
+            </main>
           </div>
-          <div className='menu-container'>
-            <div className={`menu-left ${show ? `menu_active` : null }`}>
-                  <Link className="right-link" to='/'>AS</Link>
-                  <div className={`menu-toggle ${show ? `menu_active` : null } right-link`} onClick={() => setShow(!show)}>Projects</div>
-            </div>
-              <div className='main-right'  onClick={() => show ? setShow(false) : null}>
-                  <Link className='main-link' to='/text'>Text</Link>
-                  <Link className='main-link' to='/contact'>Contact</Link>
-              </div>
-            </div>
-               <div className={`nav-container ${show ? `menu_active` : null }`} onClick={() => setShow(!show)}>      
-                    {/* <h3><Link to='/'>Home</Link></h3> */}
-                    {/* <h3><Link to='/about'>About</Link></h3> */}
-                    {/* <h3><Link to='/painting'>Painting All</Link></h3> */}
-                    {/* <h3><Link to='/projects'>Projects</Link></h3> */}
-                    {data.allContentfulProject.edges?.map((edge) => (
-                     <h3 key={edge.node.id}><Link to={`/projects/${edge.node.slug}`}>{edge.node.title}</Link></h3>
-                   ))}
-                   
-               </div>
-           {/* <h1>{query.allContentfulProject.nodes}</h1> */}
-           <main onClick={() => setShow(false)}>
-               {/* <h1>{pageTitle}</h1> */}
-               {children}
-           </main>
-        </div>
     )
+  } else {
+    return (
+      <div id="main-container" >
+            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+            <div id="mouse">
+              <div id="mouse-bg"></div>
+              <div id="tooltip"></div>
+            </div>
+            <FullMenu data={data} show={show} setShow={setShow}/>
+            {/* <h1>{query.allContentfulProject.nodes}</h1> */}
+            <main onClick={() => setShow(false)}>
+                {/* <h1>{pageTitle}</h1> */}
+                {children}
+            </main>
+          </div> 
+    )
+  }
 }
-
 
 export default Layout;
 
