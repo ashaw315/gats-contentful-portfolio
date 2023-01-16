@@ -20,7 +20,7 @@ const FullMenu = ({ data, show, setShow }) => {
                 ))}
             </button>
         </>
-    )
+    ) 
 }
 
 export default FullMenu;
