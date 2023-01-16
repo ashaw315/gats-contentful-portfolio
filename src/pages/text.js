@@ -13,7 +13,6 @@ import { graphql } from "gatsby";
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-
      const span = chars.map((char, index) => {
         return (
             <span className={`span-${index} dance-char`} key={index}>{char}
