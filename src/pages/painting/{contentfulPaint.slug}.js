@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Layout from '../../components/layout'
 import { graphql, Link } from 'gatsby'
-import { navigate } from 'gatsby'
 
 const PaintPage = ({data, pageContext}) => {
     // console.log(data)
@@ -25,7 +24,7 @@ const PaintPage = ({data, pageContext}) => {
             <p>anything?</p>
             <Link to={`/painting/${next}`}>Previous</Link>
             <Link to={`/painting/${prev}`}>Next</Link>
-            <img src={data.contentfulPaint.image.file.url}/>
+            <img src={data.contentfulPaint.image.file.url} alt={data.contentfulPaint.title}/>
         </Layout>
     )
 }

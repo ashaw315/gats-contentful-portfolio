@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'gatsby'
 import { useStaticQuery } from 'gatsby'
 import { graphql } from 'gatsby'
-// import svgLogo from ""
-// import svgLogo  from '../assets/logo'
-import Logo from '../assets/logo'
 import gsap from "gsap";
-import { Expo, TweenMax } from 'gsap';
+import { TweenMax } from 'gsap';
 import $ from "jquery";
 import FullMenu from './fullmenu'
 import MobileMenu from './mobilemenu'
@@ -42,14 +38,12 @@ const Layout = ({ pageTitle, children }) => {
 // ))
 // console.log(test)
 
-
-
 useEffect(() => {
     
   const mouseElement = document.querySelector("#mouse");
   const mouseBg = $("#mouse-bg");
   const mainContainer = $("#main-container")
-  let lastMouseBg = "";
+  // let lastMouseBg = "";
   const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
   const mouse = { x: pos.x, y: pos.y };
   const speed = 0.55;
@@ -80,20 +74,17 @@ useEffect(() => {
       $("#mouse")[(polarity ? "removeClass":"addClass")]("hide");
     }
 
-  const textLoop = document.querySelector(".bg-text")
-
   let mouseOn = false;
   window.addEventListener("mousemove", e => {
-  mouse.x = e.x;
-  mouse.y = e.y;
-  let c = 0;
-  if(!mouseOn){
-      mouseToggle(true);
-  }
-  if (mouse.x <= mouse.y) {
-    c = mouse.y - mouse.x;
-}
-  // textLoop.style.color= `rgb(${mouse.x}, ${(mouse.y - 255) * (-1)}, ${c})`;
+    mouse.x = e.x;
+    mouse.y = e.y;
+    // let c = 0;
+    if(!mouseOn){
+        mouseToggle(true);
+    }
+    // if (mouse.x <= mouse.y) {
+    //   c = mouse.y - mouse.x;
+    // }
   });
 
   const setToolTip = (text) => {
@@ -146,6 +137,16 @@ useEffect(() => {
   
       window.addEventListener('resize', handleResize);
 
+      
+      function handleClick(event) {
+        if (event.target.closest('.menu-toggle')) {
+            return;
+          }
+          setShow(false);
+        }
+        document.addEventListener('click', handleClick);
+      
+
     return () => {
       window.removeEventListener('mousemove', (e) => {
         mouse.x = e.x;
@@ -155,7 +156,8 @@ useEffect(() => {
         }
       })
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('resize', appHeight)
+      window.removeEventListener('resize', appHeight);
+      document.removeEventListener('click', handleClick);
     }
 
 }, []);
@@ -171,9 +173,7 @@ console.log(data)
               <div id="tooltip"></div>
             </div>
             <MobileMenu data={data} show={show} setShow={setShow}/>
-            {/* <h1>{query.allContentfulProject.nodes}</h1> */}
-            <main onClick={() => setShow(false)}>
-                {/* <h1>{pageTitle}</h1> */}
+            <main>
                 {children}
             </main>
           </div>
@@ -188,7 +188,7 @@ console.log(data)
             </div>
             <FullMenu data={data} show={show} setShow={setShow}/>
             {/* <h1>{query.allContentfulProject.nodes}</h1> */}
-            <main onClick={() => setShow(false)}>
+            <main>
                 {/* <h1>{pageTitle}</h1> */}
                 {children}
             </main>

@@ -1,50 +1,9 @@
-import React, { useRef, useState, useEffect } from "react";
+import React from "react";
 import Layout from "../components/layout";
 import { graphql, Link } from "gatsby";
 import Marquee from "react-fast-marquee";
-import useMousePosition from "../assets/useMousePosition";
-import { motion } from 'framer-motion';
-import gsap from "gsap";
-import { Expo } from 'gsap';
-import $ from "jquery";
 
 const ProjectPage = ({ pageContext }) => {
-
-
-// useEffect(() => {
-//   function multiplyNode(node, count, deep) {
-//     for (var i = 0, copy; i < count - 1; i++) {
-//         copy = node.cloneNode(deep);
-//         node.parentNode.insertBefore(copy, node);
-//     }
-// }
-
-// multiplyNode(document.querySelector('.project-title'), 5, true);
-// // multiplyNode(document.querySelector('.project-title-2'), 10, true);
-
-
-// }, []);
-
-
-
-let { data} = pageContext
-// console.log("HELLLLLLLLOOOOOO",data)
-console.log("HELLLLLLLLOOOOOO", pageContext)
-let projects = pageContext.projectGroup
-console.log("PROJECTS", projects)
-
-projects.map((p) => {
-  console.log("INDVI PROJECT",p)
-})
-
-
-// const previous = index === 0 ? null : items[index - 1].node
-
-// console.log("PAGE Context",slug, title, id) 
-
-
-
-    console.log("projectdata", data)
 
     return (
         <Layout>

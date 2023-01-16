@@ -9,17 +9,17 @@ function MatterMobile() {
     // const [canvasId, setCanvasId] = useState("pl-"+Math.random().toString().slice(15))
 
     //***** grabbed from example code *****//
-      try {
-        if (typeof MatterWrap !== 'undefined') {
-            // either use by name from plugin registry (Browser global)
-            Matter.use('matter-wrap');
-        } else {
-            // or require and use the plugin directly (Node.js, Webpack etc.)
-            Matter.use(require('matter-wrap'));
-        }
-    } catch (e) {
-        // could not require the plugin or install needed
-    }
+    //   try {
+    //     if (typeof MatterWrap !== 'undefined') {
+    //         // either use by name from plugin registry (Browser global)
+    //         Matter.use('matter-wrap');
+    //     } else {
+    //         // or require and use the plugin directly (Node.js, Webpack etc.)
+    //         Matter.use(require('matter-wrap'));
+    //     }
+    // } catch (e) {
+    //     // could not require the plugin or install needed
+    // }
 
 useEffect(() => {
 

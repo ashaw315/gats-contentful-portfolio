@@ -49,9 +49,11 @@ const randomColor = Math.floor(Math.random()*16777215).toString(16);
         .menu-left a {
             color: transparent!important;
         }
-        .menu-toggle {
-            mix-blend-mode: difference;
-            filter: invert(1);
+        @media (max-width: 768px) {
+            .menu-toggle {
+                mix-blend-mode: difference;
+                filter: invert(1);
+            }
         }
         .home-logo {
             mix-blend-mode: difference;
