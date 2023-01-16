@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "../components/layout";
 import { graphql, Link } from "gatsby";
 
 const PaintingTemplate = ({ pageContext }) => {
+  const [pathname, setPathname] = useState('');
+
+  useEffect(() => {
+    setPathname(window.location.pathname);
+  }, []);
 
   // Current Painting, all data!
   const painting = pageContext.group;
@@ -19,7 +24,7 @@ const PaintingTemplate = ({ pageContext }) => {
   //   nextnext = index === works.length - 1 ? null : works[index + 1].work
   
   // Grab Path name
-  const pathArray = window.location.pathname.split('/');
+  const pathArray = pathname.split('/');
   const paintingPath = pathArray[3];
 
   // Get index of works in Project

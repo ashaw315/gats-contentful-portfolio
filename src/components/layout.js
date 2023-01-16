@@ -11,7 +11,7 @@ import MobileMenu from './mobilemenu'
 const Layout = ({ pageTitle, children }) => {
 
   const [show, setShow] = useState(false)
-  const [isMobile, setIsMobile] = useState(window.innerWidth)
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth : null)
 
     const data = useStaticQuery(graphql`
     {
@@ -104,18 +104,20 @@ useEffect(() => {
       toolTip(false);
     });
 
-    $(".prev").mouseenter((e)=>{
-      // mouseBg.css("background", `url('/prev-icon.png')`);
+    $(document).on("mouseenter", ".prev", function(e) {
+      console.log("TRIGGERED?")
       mouseBg.css("background", `black`);
+      // mouseBg.css("clip-path", "polygon(0% 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%)")
       mouseBg.css("clip-path", "polygon(0 35%, 100% 35%, 100% 65%, 0 65%)")
       mainContainer.css("cursor", "none");
     }).mouseleave((e)=>{
         mouseBg.css("background","");
         mainContainer.css("cursor", "default");
-      });
+    });
 
     $(".next").mouseenter((e)=>{
       // mouseBg.css("background", `url('/prev-icon.png')`);
+      console.log("nex-trigger")
       mouseBg.css("background", `black`);
       mouseBg.css("clip-path", "polygon(0% 35%, 35% 35%, 35% 0%, 65% 0%, 65% 35%, 100% 35%, 100% 65%, 65% 65%, 65% 100%, 35% 100%, 35% 65%, 0% 65%)")
       mainContainer.css("cursor", "none");
@@ -132,7 +134,9 @@ useEffect(() => {
     // appHeight()
 
       function handleResize() {
-        setIsMobile(window.innerWidth);
+        if(typeof window !== 'undefined') {
+          setIsMobile(window.innerWidth);
+        }
       }
   
       window.addEventListener('resize', handleResize);
