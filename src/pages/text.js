@@ -27,7 +27,6 @@ import { graphql } from "gatsby";
                 `}
                 </style>
             </span>
-            
         )
      })
 
