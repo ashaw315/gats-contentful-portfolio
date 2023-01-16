@@ -12,10 +12,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsby-inc/gatsby-demo-minimal.git"
+    "url": "git+https://github.com/ashaw315/gats-contentful-portfolio"
   },
   "engines": {
-    "node": "latest"
+    "node": ">=18.x"
 },
   "keywords": [
     "gatsby",
