@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from 'gatsby'
 
 const FullMenu = ({ data, show, setShow }) => {
-
     return (
         <>
         <div className='menu-container'>
