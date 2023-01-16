@@ -19,7 +19,6 @@ const FullMenu = ({ data, show, setShow }) => {
                 {data.allContentfulProject.edges?.map((edge) => (
                      <h3 key={edge.node.id}><Link to={`/projects/${edge.node.slug}`}>{edge.node.title}</Link></h3>
                 ))}
-                   
             </button>
         </>
     )
