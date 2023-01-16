@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Gatsby's minimal demo",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "develop": "gatsby develop",
     "build": "gatsby build",
