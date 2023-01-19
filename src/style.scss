@@ -711,9 +711,7 @@ path {
     justify-content: center;
     height: 100vh;
     @include bp(sm) {
-      height: auto;
-      align-items: baseline;
-      margin-top: 20%;
+      height: 80vh;
     }
     .prev {
         width: 18vw;
@@ -756,8 +754,10 @@ path {
         display: flex;
         align-items: center;
         @include bp(sm) {
-          display: block;
-          height: 90%;
+          // display: block;
+          max-height: 80%;
+          padding: 0 1rem;
+          margin-top: 1rem;
         }
         img {
             max-width: 100%;
@@ -768,14 +768,15 @@ path {
 .single-painting-info {
     width: 15vw;
     font-size: 0.75em;
-    position: absolute;
+    position: fixed;
     bottom: 3rem;
-    right: 1rem;
+    right: 2rem;
     text-align: right;
     @include bp(sm) {
-      bottom: 3rem;
-      right: 2rem;
-      width: 30vw;
+      bottom: 0.5rem;
+      right: 1rem;
+      font-size: 0.5em;
+      width: auto;
       text-align: right;
     }
     .painting-info {

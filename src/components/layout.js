@@ -168,7 +168,23 @@ useEffect(() => {
 
 console.log(data)
 
-  if (isMobile < 768) {
+  if (isMobile > 768) {
+    return (
+      <div id="main-container" >
+        <title>{pageTitle} | {data.site.siteMetadata.title}</title>
+            <div id="mouse">
+              <div id="mouse-bg"></div>
+              <div id="tooltip"></div>
+            </div>
+            <FullMenu data={data} show={show} setShow={setShow}/>
+            {/* <h1>{query.allContentfulProject.nodes}</h1> */}
+            <main>
+                {/* <h1>{pageTitle}</h1> */}
+                {children}
+            </main>
+      </div> 
+    )
+  } else {
     return (
       <div id="main-container" >
             <title>{pageTitle} | {data.site.siteMetadata.title}</title>
@@ -182,24 +198,7 @@ console.log(data)
             </main>
           </div>
     )
-  } else {
-    return (
-      <div id="main-container" >
-            <title>{pageTitle} | {data.site.siteMetadata.title}</title>
-            <div id="mouse">
-              <div id="mouse-bg"></div>
-              <div id="tooltip"></div>
-            </div>
-            <FullMenu data={data} show={show} setShow={setShow}/>
-            {/* <h1>{query.allContentfulProject.nodes}</h1> */}
-            <main>
-                {/* <h1>{pageTitle}</h1> */}
-                {children}
-            </main>
-          </div> 
-    )
   }
 }
 
 export default Layout;
-

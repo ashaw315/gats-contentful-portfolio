@@ -25,16 +25,16 @@ function IndexPage() {
 
   console.log("MOBILE????",isMobile)
 
-  if (isMobile < 768) {
+  if (isMobile > 768) {
     return (
       <Layout>
-        <MatterMobile />
+        <MatterFull />
       </Layout>
     )
   } else {
     return (
       <Layout>
-        <MatterFull />
+        <MatterMobile />
       </Layout>
     )
   }
